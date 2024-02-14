@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Results of National Assembly of Pakistan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        #totalSeats {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Election Results of National Assembly of Pakistan</h1>
+    <button id="pti" onclick="showResult('PTI')">PTI</button>
+    <button id="pmln" onclick="showResult('PMLN')">PMLN</button>
+    <button id="ppp" onclick="showResult('PPP')">PPP</button>
+    <button id="others" onclick="showResult('Others')">Others</button>
+    <div id="result"></div>
+    <div id="totalSeats">Total Seats: 265</div>
+
+    <script>
+        function showResult(party) {
+            var totalSeats = 265;
+            var result = "";
+            var percentage = 0;
+            switch(party) {
+                case 'PTI':
+                    percentage = (180 / totalSeats) * 100;
+                    result = "PTI: 180 seats (" + percentage.toFixed(2) + "%)";
+                    break;
+                case 'PMLN':
+                    percentage = (30 / totalSeats) * 100;
+                    result = "PMLN: 30 seats (" + percentage.toFixed(2) + "%)";
+                    break;
+                case 'PPP':
+                    percentage = (15 / totalSeats) * 100;
+                    result = "PPP: 15 seats (" + percentage.toFixed(2) + "%)";
+                    break;
+                case 'Others':
+                    var othersSeats = totalSeats - 180 - 30 - 15;
+                    percentage = (othersSeats / totalSeats) * 100;
+                    result = "Others: " + othersSeats + " seats (" + percentage.toFixed(2) + "%)";
+                    break;
+                default:
+                    result = "Invalid party";
+            }
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+</body>
+</html>
